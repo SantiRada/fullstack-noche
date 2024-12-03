@@ -1,0 +1,15 @@
+body{
+    padding: 2rem 5rem; /* ARRIBA-ABAJO IZQ-DER */
+    padding: 2rem 5rem 20px; /* ARRIBA IZQ-DER ABAJO */
+    padding: 2px 50% 2px 5rem; /* ARRIBA DERECHA ABAJO IZQUIERDA */
+
+    padding-left: 2rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    padding-inline: 20px; /* IZQUIERDA Y DERECHA */
+    padding-inline: 20px 40px; /* IZQUIERDA DERECHA */
+    padding-block: 20px; /* ARRIBA Y ABAJO */
+    padding-block: 20px 40px; /* ARRIBA ABAJO */
+}
