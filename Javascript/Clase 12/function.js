@@ -103,6 +103,10 @@ if(promedio <= 10) {
     title.innerHTML = "El promedio no es correcto.";
 }
 
+// title                // TODO EL CONTENIDO
+// title.textContent    // SOLO SU TEXTO
+// title.innerHTML      // MODIFICA EL HTML CREADO
+// title.innerText      // MODIFICA SOLO SU TEXTO
 
 
 
