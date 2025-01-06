@@ -123,8 +123,10 @@ if(promedio <= 10) {
 // SINO SI (PASA ESTO) ENTONCES
 // SINO
 
+// DAME EJERCICIOS PARA PRACTICAR CONDICIONALES Y OPERADORES EN JAVASCRIPT
+
 // Desarrollar un programa en JavaScript que permita calcular el descuento aplicado a una compra 
-// según el monto total y la categoría del cliente (Regular o VIP). 
+// según el monto total y la categoría del cliente (Regular o VIP).
 // Finalmente, muestra el monto final a pagar y un texto que indique el descuento aplicado.
 
 // Reglas de descuento:
