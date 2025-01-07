@@ -77,3 +77,7 @@ switch(typeAccount) {
 }
 
 console.log("El resultado es: " + resultado);
+
+
+
+
