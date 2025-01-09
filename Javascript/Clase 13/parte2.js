@@ -272,11 +272,7 @@ let mail = document.getElementById('mail');
 let pass = document.getElementById('pass');
 let sendForm = document.getElementById('send-form');
 
-let user = {
-    nombre: undefined,
-    mail: undefined,
-    pass: undefined,
-};
+let user = {};
 
 sendForm.addEventListener("click", () => {
     user = {
