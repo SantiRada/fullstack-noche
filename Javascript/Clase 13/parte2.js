@@ -184,7 +184,10 @@ let b = [ 40, 50, 60 ];
 
 let array = [ "tortuga", "leon", "liebre", "Jirafa", "Tigre" ];
 
-for (let item of array) {
+// ARRAYS
+// FOR IN = INDICE
+// FOR OF = VALOR
+for (let item in array) {
     // console.log(item);
 }
 
