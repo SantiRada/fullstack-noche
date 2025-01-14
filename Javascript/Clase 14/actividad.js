@@ -142,3 +142,6 @@ function SearchTask(){
 
     } while (moreSearch);
 }
+
+// WHILE - DO-WHILE - MAP - FILTER
+// Object.entries // .values // .keys
