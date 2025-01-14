@@ -138,19 +138,19 @@ let opcion;
 //     }
 // }
 
-let usuarios = [ "Aldana", "Agustina", "Elian", "Jose", "Ivan" ];
-let saludos = usuarios.map(usuario => usuario = "Hola " + usuario);
-console.log(saludos);
+// let usuarios = [ "Aldana", "Agustina", "Elian", "Jose", "Ivan" ];
+// let saludos = usuarios.map(usuario => usuario = "Hola " + usuario);
+// console.log(saludos);
 
-let climaCelsius = [ 25, 28, 30 ];
+// let climaCelsius = [ 25, 28, 30 ];
 
 // CELSIUS A FAHRENHEIT
 // F = (C x 1.8) + 32
 
-let climaFahrenheit = climaCelsius.map(clima => clima = (clima * 1.8) + 32);
+// let climaFahrenheit = climaCelsius.map(clima => clima = (clima * 1.8) + 32);
 
-console.log("Celsius:" + climaCelsius);
-console.log("Fahrenheit:" + climaFahrenheit);
+// console.log("Celsius:" + climaCelsius);
+// console.log("Fahrenheit:" + climaFahrenheit);
 
 // usuarios = [ "Aldana", "Agustina", "Elian", "Jose", "Ivan" ];
 // for(let usuario of usuarios){
