@@ -1,21 +1,3 @@
-// Actividad: Sistema de gestión de tareas
-// En esta actividad, crearás un sistema para gestionar tareas que permita al usuario agregar, listar y filtrar tareas, usando un array de objetos que contenga la información de cada tarea. El sistema deberá usar map, filter, while, prompt, arrays y objetos de manera combinada.
-
-// Requisitos de la actividad:
-
-// Objetos de tareas: Cada tarea tendrá la siguiente estructura:
-// id: un número único.
-// nombre: el nombre de la tarea (cadena de texto).
-// completada: un valor booleano que indica si la tarea está completada o no.
-
-// Operaciones:
-// Agregar nuevas tareas.
-// Mostrar todas las tareas (todas, completadas o no completadas).
-// Buscar una tarea
-// Marcar tareas como completadas.
-
-// El sistema seguirá pidiendo operaciones al usuario hasta que decida salir.
-
 let tareas = [
     {
         "id": 0,
@@ -59,89 +41,89 @@ let tareas = [
     },
 ];
 
+// ---- AGREGAR TAREAS A HTML ---- //
+let list = document.querySelector(".list-task");
+// FOREACH - FOR OF
+CreateListTask(tareas);
+// ---- AGREGAR TAREAS A HTML ---- //
+
 let searchbar = document.getElementById("searchbar");
-let buttonSearch = document.getElementById("button-search");
 
 // INPUT DE CREACIÓN DE TAREA
 let createbar = document.getElementById("createbar");
 let buttonCreate = document.getElementById("create-task");
 
-buttonSearch.addEventListener('click', () => {
-    SearchTask();
+let btnReverse = document.getElementById('reverse');
+
+btnReverse.addEventListener('click', () => {
+    list.classList.toggle('column-reverse');
 });
 
-buttonCreate.addEventListener('click', () => {
+buttonCreate.addEventListener('click', (e) => {
+    e.preventDefault();
     AddTask();
 });
 
+searchbar.addEventListener('change', () => { SearchTask(); });
+
+function CreateListTask (showTask) {
+    list.innerHTML = '';
+
+    // MAP - FILTER - FIND - SORT 
+    showTask.sort((tarea1,tarea2) => tarea1.nombre.localeCompare(tarea2.nombre));
+
+    showTask.forEach((tarea) => { AddOneTask(tarea); });
+}
+function AddOneTask (tarea) {
+    let item = document.createElement('div');
+    item.classList.add('task');
+    list.appendChild(item);
+
+    let h4 = document.createElement('h4');
+    item.appendChild(h4);
+    h4.textContent = tarea.nombre;
+    
+    let p = document.createElement('p');
+    item.appendChild(p);
+
+    let i = document.createElement('i');
+    if (tarea.completada) { i.classList.add('show'); }
+    else { i.classList.add('hide'); }
+    p.append(i);
+
+}
 // OPCION 1: AGREGAR TAREA
 function AddTask(){
-    let moreTask = true;
-    let nombre = null;
 
-    do{
-        if(nombre != null){
-            moreTask = parseInt(prompt("¿Quieres añadir una nueva tarea? 1: SI // 2: NO")) == 1 ? true : false;
-        }
-
-        if(!moreTask) { break; }
-
-        nombre = prompt("Añadir tarea: ");
-        let completada = prompt("¿Está completada? 1: SI // 2: NO");
-        completada = parseInt(completada) == 1 ? true : false;
-        
-        nombre[0].toLocaleUpperCase();
-
+    // FUNCIONES DE ARRAYS = MAP, FILTER, FIND
+    let ejemplo = tareas.find(tarea => tarea.nombre.toLocaleLowerCase() == createbar.value.toLocaleLowerCase());
+    
+    if (createbar.value == "") { alert("Falta contenido"); }
+    else if (ejemplo != null) { alert("Esta tarea ya existe"); }
+    else{
         let nuevaTarea = {
             "id": tareas.length,
-            "nombre": nombre,
-            "completada": completada
+            "nombre": createbar.value,
+            "completada": false
         };
-        
+
         tareas.push(nuevaTarea);
-    } while (moreTask);
-}
-
-// OPCION 2: MOSTRAR TAREAS
-function ShowTask(){
-    // TAREA == cada elemento de iteración
-    let completedTask = [];
-    let notCompletedTask = [];
-    for(tarea of tareas){
-        if(tarea.completada){ completedTask.push(tarea.nombre); }
-        else{ notCompletedTask.push(tarea.nombre); }
+        CreateListTask(tareas);
     }
-
-    alert("Completadas: " + completedTask);
-    alert("Pendientes: " + notCompletedTask);
 }
-
-// OPCION 3: BUSCAR TAREA
+// OPCION 2: BUSCAR TAREA
 function SearchTask(){
-    let input = null;
-    let moreSearch = true;
+    let input = searchbar.value;
+    input = input.toLocaleLowerCase();
 
-    do{
-        if(input != null) {
-            moreSearch = parseInt(prompt("¿Quieres hacer otra búsqueda? 1: SI // 2: NO")) == 1 ? true : false;
-        }
+    // FILTRA EL CONTENIDO DE UN ARRAY SEGÚN UNA CONDICIÓN
+    let tareasFiltradas = tareas.filter(tarea => tarea.nombre.toLocaleLowerCase().includes(input));
 
-        if(!moreSearch) { break; }
-        input = prompt("Buscar tarea por nombre...");
-        input = input.toLocaleLowerCase();
-
-        // FILTRA EL CONTENIDO DE UN ARRAY SEGÚN UNA CONDICIÓN
-        let tareasFiltradas = tareas.filter(tarea => tarea.nombre.toLocaleLowerCase().includes(input));
-
-        let totalTask = [];
-        for(tarea of tareasFiltradas){
-            totalTask.push(tarea.nombre);
-        }
-    
-        alert(totalTask);
-
-    } while (moreSearch);
+    CreateListTask(tareasFiltradas);
 }
 
-// WHILE - DO-WHILE - MAP - FILTER
-// Object.entries // .values // .keys
+// 1. REPASAR TODO EL LISTADO
+// 2. CONTAR LA CANTIDAD DE CARACTERES DE CADA TAREA QUE SON IGUALES
+// 3. TENER UN VALOR ÍNDICE QUE SIRVA PARA SABER SI ES SUFICIENTEMENTE IGUAL
+// 4. MOSTRAR MENSAJE DE SIMILITUD
+// 5. SEGUIR A LA SIGUIENTE TAREA
