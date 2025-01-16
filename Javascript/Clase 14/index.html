@@ -8,24 +8,26 @@
     <script src="https://kit.fontawesome.com/a26e3520ad.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <form method="post" class="form-create">
+        <input type="text" placeholder="Crear tarea..." id="createbar" class="input">
+        <input type="submit" value="Crear tarea" id="create-task" class="button">
+    </form>
     <form class="form-search">
         <input type="text" placeholder="Buscar tarea por nombre..." id="searchbar" class="input">
         <a id="reverse" class="button"><i class="fa-solid fa-arrow-up-wide-short"></i></a>
         <!-- <input type="submit" value="Buscar" id="button-search" class="button"> -->
     </form>
 
-    <div class="list-task">
-        <!-- <div class="task">
-            <h4>Nombre de la tarea</h4>
-            <p><i></i></p>
-        </div> -->
+    <div class="list">
+        <div class="list-task-complete">
+            <h3>Completadas</h3>
+            <div class="list-complete list-data"></div>
+        </div>
+        <div class="list-task-pending">
+            <h3>Pendientes</h3>
+            <div class="list-pending list-data"></div>
+        </div>
     </div>
-
-    <form method="post" class="form-create">
-        <input type="text" placeholder="Crear tarea..." id="createbar" class="input">
-        <input type="submit" value="Crear tarea" id="create-task" class="button">
-    </form>
-
     
     <!-- <script src="function.js"></script> -->
     <script src="actividad.js"></script>

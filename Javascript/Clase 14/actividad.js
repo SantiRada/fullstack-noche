@@ -42,7 +42,8 @@ let tareas = [
 ];
 
 // ---- AGREGAR TAREAS A HTML ---- //
-let list = document.querySelector(".list-task");
+let list = document.querySelector(".list-complete");
+let listPending = document.querySelector(".list-pending");
 // FOREACH - FOR OF
 CreateListTask(tareas);
 // ---- AGREGAR TAREAS A HTML ---- //
@@ -57,6 +58,7 @@ let btnReverse = document.getElementById('reverse');
 
 btnReverse.addEventListener('click', () => {
     list.classList.toggle('column-reverse');
+    listPending.classList.toggle('column-reverse');
 });
 
 buttonCreate.addEventListener('click', (e) => {
@@ -68,29 +70,54 @@ searchbar.addEventListener('change', () => { SearchTask(); });
 
 function CreateListTask (showTask) {
     list.innerHTML = '';
+    listPending.innerHTML = '';
 
-    // MAP - FILTER - FIND - SORT 
+    // MAP - FILTER - FIND - SORT - FOREACH
     showTask.sort((tarea1,tarea2) => tarea1.nombre.localeCompare(tarea2.nombre));
 
-    showTask.forEach((tarea) => { AddOneTask(tarea); });
+    showTask.forEach((tarea, i) => { AddOneTask(tarea, i); });
 }
-function AddOneTask (tarea) {
+function AddOneTask (tarea, iter) {
     let item = document.createElement('div');
     item.classList.add('task');
-    list.appendChild(item);
+
+    if(tarea.completada) { list.appendChild(item); }
+    else { listPending.appendChild(item); }
 
     let h4 = document.createElement('h4');
     item.appendChild(h4);
     h4.textContent = tarea.nombre;
     
+    let divIcons = document.createElement('div');
+    divIcons.classList.add('list-icon');
+    item.appendChild(divIcons);
+
     let p = document.createElement('p');
-    item.appendChild(p);
+    divIcons.appendChild(p);
 
     let i = document.createElement('i');
     if (tarea.completada) { i.classList.add('show'); }
     else { i.classList.add('hide'); }
-    p.append(i);
+    p.appendChild(i);
 
+    p.addEventListener('click', () => {
+        tareas[iter].completada = !tareas[iter].completada;
+
+        ChangeTask(tarea, item, iter);
+    });
+
+    let xmark = document.createElement('i');
+    xmark.classList.add('fas', 'fa-xmark', 'icon');
+    divIcons.appendChild(xmark);
+    xmark.addEventListener('click', () => {
+        tareas.pop(tarea);
+        item.remove();
+    });
+}
+function ChangeTask(tarea, item, iter){
+    item.remove();
+
+    AddOneTask(tarea, iter);
 }
 // OPCION 1: AGREGAR TAREA
 function AddTask(){
@@ -127,3 +154,12 @@ function SearchTask(){
 // 3. TENER UN VALOR ÍNDICE QUE SIRVA PARA SABER SI ES SUFICIENTEMENTE IGUAL
 // 4. MOSTRAR MENSAJE DE SIMILITUD
 // 5. SEGUIR A LA SIGUIENTE TAREA
+
+
+// LOCALSTORAGE
+// CREATE-NEW-LIST
+
+// MENÚ HAMBURGUESA 
+// DARK MODE
+// CARRUSEL DE IMÁGENES
+// CALCULADORA - TA-TE-TI
