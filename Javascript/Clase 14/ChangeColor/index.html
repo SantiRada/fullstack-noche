@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Color</title>
+    <style>
+        body{
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            min-height: 100vh;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg">
+    
+    <a data-color="red" class="button">Rojo</a>
+    <a data-color="#3d2ac2" class="button">Azul</a>
+    <a data-color="purple" class="button">Violeta</a>
+    <a data-color="orange" class="button">Naranja</a>
+    <a data-color="green" class="button">Verde</a>
+
+    <script>
+        const buttons = document.querySelectorAll('.button');
+        let bg = document.querySelector('.bg');
+
+        buttons.forEach((button) => {
+            // button.addEventListener('click', () => {
+            //     PARA QUE FUNCIONE EL TEXTO DEL ELEMENTO BUTTON TIENE QUE SER UN VALOR DE COLOR
+            //     bg.style.backgroundColor = button.textContent;
+            // });
+
+            // button.addEventListener('click', () => {
+            //     PARA QUE FUNCIONE LA SEGUNDA CLASE DEL BUTTON TIENE QUE SER EL NOMBRE DE UN COLOR EN INGLÉS
+            //     bg.style.backgroundColor = button.classList[1];
+            // });
+
+            button.addEventListener('click', () => {
+                bg.style.backgroundColor = button.dataset.color;
+            });
+        });
+    </script>
+</body>
+</html>

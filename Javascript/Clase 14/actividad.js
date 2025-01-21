@@ -41,6 +41,10 @@ let tareas = [
     },
 ];
 
+if(localStorage.getItem("tareas")){
+    tareas = JSON.parse(localStorage.getItem("tareas"));
+}
+
 // ---- AGREGAR TAREAS A HTML ---- //
 let list = document.querySelector(".list-complete");
 let listPending = document.querySelector(".list-pending");
@@ -112,12 +116,15 @@ function AddOneTask (tarea, iter) {
     xmark.addEventListener('click', () => {
         tareas.pop(tarea);
         item.remove();
+        SaveList();
     });
 }
 function ChangeTask(tarea, item, iter){
     item.remove();
 
     AddOneTask(tarea, iter);
+
+    SaveList();
 }
 // OPCION 1: AGREGAR TAREA
 function AddTask(){
@@ -136,6 +143,8 @@ function AddTask(){
 
         tareas.push(nuevaTarea);
         CreateListTask(tareas);
+
+        SaveList();
     }
 }
 // OPCION 2: BUSCAR TAREA
@@ -149,17 +158,22 @@ function SearchTask(){
     CreateListTask(tareasFiltradas);
 }
 
+function SaveList(){
+    localStorage.setItem('tareas', JSON.stringify(tareas));
+}
+
 // 1. REPASAR TODO EL LISTADO
 // 2. CONTAR LA CANTIDAD DE CARACTERES DE CADA TAREA QUE SON IGUALES
 // 3. TENER UN VALOR ÍNDICE QUE SIRVA PARA SABER SI ES SUFICIENTEMENTE IGUAL
 // 4. MOSTRAR MENSAJE DE SIMILITUD
 // 5. SEGUIR A LA SIGUIENTE TAREA
 
-
 // LOCALSTORAGE
 // CREATE-NEW-LIST
+
+// find, findIndex, slice, reduce, indexof, lastindexof, setinterval
+// Modificar css desde js, padStart, padEnd, JSON, localStorage, Crear un Reloj
 
 // MENÚ HAMBURGUESA 
 // DARK MODE
 // CARRUSEL DE IMÁGENES
-// CALCULADORA - TA-TE-TI
