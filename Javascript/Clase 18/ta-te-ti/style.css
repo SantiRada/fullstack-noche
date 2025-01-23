@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: #222;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.board{
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 1rem;
+    width: calc(300px + 2rem);
+    height: calc(300px + 2rem);
+}   
+.square{
+    background-color: #444;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease-in;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+    font-weight: bold;
+
+    &:hover{ background-color: color-mix(in srgb, #444, #fff 10%); }
+    &:active{ background-color: color-mix(in srgb, #444, #000 10%); }
+}
+.turn{
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    p{
+        background-color: #444;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    span { font-weight: 400; }
+}
+.reset{
+    background-color: #09f;
+    border-radius: 8px;
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.15rem;
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    transition: all .2s ease-in;
+    cursor: pointer;
+
+    &:hover{ background-color: color-mix(in srgb, #09f, #000 20%); }
+    &:active{ background-color: color-mix(in srgb, #09f, #000 35%); }
+}
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 10;
+    background-color: #444;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0px 0px 10px #00000080;
+    min-height: 200px;
+    min-width: 50%;
+}
+.modal-btn{
+    position: relative;
+    top: 0;
+    right: 0;
+}
+.btn{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.winning-line{
+    width: 400px;
+    height: 5px;
+    border-radius: 8px;
+    background-color: red;
+    position: fixed;
+    transform-origin: center;
+    transform: rotateZ(45deg);
+    display: none;
+}
