@@ -1,0 +1,78 @@
+:root{
+    --grid: 10;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: #1e1e1e;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.board{
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(var(--grid), 1fr);
+    grid-template-rows: repeat(var(--grid), 1fr);
+    gap: 0.25rem;
+}
+.item{
+    background-color: #333;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    color: #aaa;
+    transition: all .25s ease-in;
+
+    cursor: crosshair;
+}
+.bar-hue{
+    width: 50px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.item-bar{
+    width: 100%;
+    height: 100%;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.preview{
+    width: 100px;
+    height: 70px;
+    background-color: #333;
+    border-radius: 8px;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.content p{
+    background-color: #333;
+    color: #ccc;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.point{ display: none; }
