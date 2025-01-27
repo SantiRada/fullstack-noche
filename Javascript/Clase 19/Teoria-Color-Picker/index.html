@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionamiento del CPUTN</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Documentación <span>Color Picker</span></h1>
+    <h2>¿Qué es un Color Picker?</h2>
+    <p>Un color picker es una herramienta interactiva que permite a los usuarios seleccionar un color de una gama o paleta de colores. Es comúnmente usado en aplicaciones de diseño, edición gráfica y sitios web para elegir colores de manera visual y precisa.</p>
+    <h2>Crear la Grilla de Colores</h2>
+    <p>El primer paso para construir un color picker es crear una grilla donde se mostrarán los colores disponibles para elegir. Esta grilla tendrá una cantidad de elementos organizados en filas y columnas (ejes X e Y). El número de elementos dependerá de cuántos colores queramos ofrecer en nuestro picker.</p>
+    <ul>
+        <li><strong>Eje X:</strong> Representa el número de columnas de colores.</li>
+        <li><strong>Eje Y:</strong> Representa el número de filas de colores.</li>
+    </ul>
+    <p>Por ejemplo, si decidimos que nuestro color picker tendrá 100 colores, podríamos organizar la grilla en una matriz de 10 filas y 10 columnas. La cantidad de filas y columnas dependerá del número total de colores que queramos mostrar.</p>
+    <div class="img"><img src="imagenes/void.png" alt="Grid vacia"></div>
+    <div class="line"></div>
+    <h2>Cómo organizar la Grilla</h2>
+    <p>La organización de la grilla podemos trabajarla de múltiples formas pero la más cómoda para trabajar toda la información y luego utilizar esos valores para definir los colores es con un índice doble, generando una grilla con valores que suben en horizontal y vertical.</p>
+    <ul>
+        <li><strong>El eje X (Horizontal):</strong> Es representado por el índice I</li>
+        <li><strong>El eje Y (Vertical):</strong> Es representado por el índice J</li>
+    </ul>
+    <div class="img-2"><img src="imagenes/number.png" alt="Grid de Números"></div>
+    <div class="line"></div>
+    <h2>Colorear la Grilla</h2>
+    <p>Ciertos valores en la grilla son fijos y los utilizamos como referencia para crear el resto de datos. Este Color Picker está pensado para trabajarse con HSL por lo que los valores fijos son:</p>
+    <ul>
+        <li><strong>Superior:</strong> Blanco fijo debido a una luminosidad del 100%</li>
+        <li><strong>Medio Derecha:</strong> Color saturado fijo debido a una saturación del 100% y luminosidad del 50%</li>
+        <li><strong>Inferior:</strong> Negro fijo debido a una luminosidad del 0%</li>
+        <li><strong>Izquierda:</strong> Escala de grises debido a una luminosidad variada y saturación del 0%</li>
+    </ul>
+    <div class="img-2"><img src="imagenes/graphic.png" alt="Imagen de la grilla con colores fijos"></div>
+    <div class="line"></div>
+    <h2>Funcionamiento de HSL</h2>
+    <p>HSL es un parámetro de color definido por HUE, Saturation y Lightness.</p>
+    <h3>HUE: Tono</h3>
+    <p>El tono es la posición de un color en la rueda cromática, es el atributo de un color que nos permite identificar dos colores como “azules” incluso si no son idénticos. El tono se mide en grados, donde 0° es rojo, 120° es verde y 240° es azul.</p>
+    <div class="img-0"><img src="imagenes/chroma.png" alt="imagen de una rueda cromática"></div>
+    <h3>Saturación</h3>
+    <p>La saturación es qué tan colorido o vívido se ve un color. La saturación del 0% es gris (sin color) y la saturación del 100% es vibrante e intensa.</p>
+    <div class="img"><img src="imagenes/saturation-1.png" alt="Imagen de una linea de color de saturación"></div>
+    <p>Sin saturación, el tono es irrelevante: rotar el tono cuando la saturación es 0 % en realidad no cambia el color en absoluto.</p>
+    <div class="img"><img src="imagenes/saturation-2.png" alt="Imagen de una linea de color de saturación"></div>
+    <h3>Luminosidad</h3>
+    <p>La luminosidad es exactamente lo que parece: mide qué tan cerca está un color del negro o del blanco. La luminosidad del 0 % es negro puro, la luminosidad del 100 % es blanco puro y la luminosidad del 50 % es un color puro en el tono dado.</p>
+    <div class="img"><img src="imagenes/lightness.png" alt="Imagen de una linea de color de saturación"></div>
+    <h2>Resultado esperado</h2>
+    <p>Un <span>Color Picker</span> con estas características debería formarse con 2 secciones.</p>
+    <ul>
+        <li><strong>Lienzo:</strong> El lienzo es la sección donde podemos ver la variación del color donde se menciona la luminosidad como eje X y saturación como eje Y.</li>
+        <li><strong>Hue:</strong> Como vemos en la imagen, el tono se externaliza y no forma parte del lienzo, se crea con su propia barra donde el último valor es igual al primero representando el círculo cromático.</li>
+    </ul>
+    <div class="img"><img src="imagenes/hsl.png" alt="Imagen de una linea de color de saturación"></div>
+    <div class="line"></div>
+    <h2>Trabajar cada valor</h2>
+    <p>Una vez que tengamos nuestra UI trabajada deberíamos de contar con las secciones:</p>
+    <ul>
+        <li><strong>Lienzo:</strong> Color Picker</li>
+        <li><strong>Bar:</strong> Hue (Tono)</li>
+        <li><strong>Selector:</strong> Aquí podremos ver que color ha sido seleccionado.</li>
+        <li><strong>RGB:</strong> Separación de los valores RGB del color seleccionado.</li>
+        <li><strong>HSL:</strong> Separación de los valores HSL del color seleccionado.</li>
+    </ul>
+    <div class="img-2"><img src="imagenes/ui.png" alt="Imagen de UI final"></div>
+    <div class="line"></div>
+    <h2>Manejo de Datos</h2>
+    <p>Comenzando por la luminosidad, repasemos que información tenemos, que sabemos y qué queremos lograr:</p>
+    <ul>
+        <li><strong>El eje X (Horizontal):</strong> Es representado por el índice I en aumento constante.</li>
+        <li><strong>El eje Y (Vertical):</strong> Es representado por el índice J en aumento constante.</li>
+        <li><strong>Luminosidad:</strong> La luminosidad del 0 % es negro puro, la luminosidad del 100 % es blanco puro y la luminosidad del 50 % es un color puro en el tono dado.</li>
+    </ul>
+    <p>Con estos datos podemos ver que el eje horizontal, la luminosidad y el índice I están completamente relacionados.</p>
+    <div class="img-2"><img src="imagenes/luminosity.png" alt=""></div>
+    <p>Lo único que nos queda por resolver es la fórmula que necesitamos para crear el valor de luminosidad que respete:</p>
+    <ul>
+        <li>i = 0 = luminosidad 0%</li>
+        <li>i = 9 = luminosidad 100%</li>
+    </ul>
+    <p>Esto podremos lograrlo con la regla de 3 simple:</p>
+    <ul>
+        <li class="important">Luminosidad = i * 100 / 9</li>
+    </ul>
+    <div class="line"></div>
+    <p>Por último repasemos como trabajar la saturación:</p>
+    <ul>
+        <li><strong>El eje Y (Vertical):</strong> Es representado por el índice J en aumento constante.</li>
+        <li><strong>Saturación:</strong> La saturación es qué tan colorido o vívido se ve un color. La saturación del 0% es gris (sin color) y la saturación del 100% es vibrante e intensa.</li>
+    </ul>
+    <p>Con estos datos podemos ver que el eje vertical, la saturación y el índice J están completamente relacionados.</p>
+    <div class="img-width"><img src="imagenes/vertical.png" alt=""></div>
+    <p>Lo único que nos queda por resolver es la fórmula que necesitamos para crear el valor de saturación que respete:</p>
+    <ul>
+        <li>J = 0 = saturación 100%</li>
+        <li>J = 9 = saturación 0%</li>
+    </ul>
+    <p>Esto podremos lograrlo con la fórmula:</p>
+    <ul>
+        <li class="important">Saturación = -100 / 9 * j + 100</li>
+    </ul>
+    <div class="line"></div>
+    <p>Ya hemos hecho el repaso total, por lo que el resultado de nuestro color picker debería verse similar a este:</p>
+    <div class="img-2"><img src="imagenes/ui.png" alt="Imagen final"></div>
+</body>
+</html>
