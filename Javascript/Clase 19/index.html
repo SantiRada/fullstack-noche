@@ -7,32 +7,53 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="board">
-        <div class="point"></div>
-    </div>
 
-    <div class="bar-hue">
-        <div class="bar-selector"></div>
-    </div>
-
-    <div class="content">
-        <div class="preview"></div>
-
-        <p class="hex"></p>
-
-        <div class="data">
-            <p class="red"></p>
-            <p class="green"></p>
-            <p class="blue"></p>
+    <section id="content">
+        <div class="board">
+            <div class="point"></div>
         </div>
 
-        <div class="data">
-            <p class="hue"></p>
-            <p class="saturation"></p>
-            <p class="lightness"></p>
+        <div class="bar-hue">
+            <div class="bar-selector"></div>
         </div>
-    </div>
 
-    <script src="function.js"></script>
+        <div class="content">
+            <div class="preview"></div>
+
+            <p class="hex"></p>
+
+            <div class="data">
+                <p class="red"></p>
+                <p class="green"></p>
+                <p class="blue"></p>
+            </div>
+
+            <div class="data">
+                <p class="hue"></p>
+                <p class="saturation"></p>
+                <p class="lightness"></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="picker">
+        <select class="select">
+            <option value="Complementario">Complementario</option>
+            <option value="Triadic">Triadic</option>
+            <option value="Tetradic">Tetradic</option>
+            <option value="Analogo">Analogo</option>
+            <option value="Neutral">Neutral</option>
+            <option value="Sombras">Sombras</option>
+            <option value="Tintes">Tintes</option>
+            <option value="Tonos">Tonos</option>
+        </select>
+
+        <div class="color-picker">
+            <!-- <div class="color"></div> -->
+        </div>
+    </section>
+
+    <script src="board.js"></script>
+    <script src="palette.js"></script>
 </body>
 </html>

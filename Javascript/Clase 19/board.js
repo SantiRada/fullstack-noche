@@ -67,8 +67,10 @@ function CreateBarHue () {
         element.style.backgroundColor = "hsl(" + (i * 8) + "deg, 100%, 50%)";
         barHue.appendChild(element);
 
-        element.addEventListener('click', () => {
+        element.addEventListener('click', (e) => {
             hue = (i * 8);
+
+            barSelector.style.transform = "translateY(" + e.layerY + "px)";
 
             ColoredBoard();
         })
@@ -77,17 +79,90 @@ function CreateBarHue () {
 
 function SelectedColor () {
 
-    let color = palette[selectedColor[0]][selectedColor[1]].style.backgroundColor;
+    let color = selectedColor.length > 0 ? palette[selectedColor[0]][selectedColor[1]].style.backgroundColor : "";
+
+    if(color == "") return;
+
+    // top: calc(40.5px * 4); // left: calc(40.5px * 4);
+
+    point.style.top = "calc(40.35px * " + selectedColor[0];
+    point.style.left = "calc(40.35px * " + selectedColor[1];
 
     preview.style.backgroundColor = color;
 
+    let colorRGB = CleanRgb(color);
+
+    redText.textContent = "R: " + colorRGB[0];
+    greenText.textContent = "G: " + colorRGB[1];
+    blueText.textContent = "B: " + colorRGB[2];
+
+    let colorHSL = RgbToHsl(colorRGB[0], colorRGB[1], colorRGB[2]);
+
+    hueText.textContent = "H: " + colorHSL[0];
+    saturationText.textContent = "S: " + colorHSL[1];
+    lightnessText.textContent = "L: " + colorHSL[2];
+
+    let colorHex = rgbToHex(parseInt(colorRGB[0]), parseInt(colorRGB[1]), parseInt(colorRGB[2]));
+
+    hexText.textContent = colorHex;
+}
+
+function CleanRgb(color){
     let newColor = color.split(',');
 
     let red = newColor[0].replace("rgb(", "").replace(" ", "");
     let green = newColor[1].replace(" ", "");
     let blue = newColor[2].replace(" ", "").replace(")", "");
 
-    redText.textContent = "R: " + red;
-    greenText.textContent = "G: " + green;
-    blueText.textContent = "B: " + blue;
+    return [ parseInt(red), parseInt(green), parseInt(blue) ];
+}
+
+function RgbToHsl(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l;
+
+    l = (max + min) / 2;
+
+    if (max === min) {
+        h = s = 0; // Achromatic
+    } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+        switch (max) {
+            case r: 
+                h = (g - b) / d + (g < b ? 6 : 0);
+                break;
+            case g: 
+                h = (b - r) / d + 2;
+                break;
+            case b: 
+                h = (r - g) / d + 4;
+                break;
+        }
+
+        h *= 60;
+    }
+
+    return [
+        Math.round(h),
+        Math.round(s * 100),
+        Math.round(l * 100)
+    ];
+}
+
+function rgbToHex(r, g, b) {
+    const toHex = (value) => {
+        // BASE 16 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f // BASE 2 = 0,1
+        const hex = value.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+    };
+
+    // return "#" + toKex(r) + toHex(g) + toHex(b);
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
