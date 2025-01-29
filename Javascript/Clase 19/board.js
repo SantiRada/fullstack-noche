@@ -19,10 +19,11 @@ let palette = []; // []
 // [0] = PRIMERA FILA
 // [0][3] = PRIMERA FILA, TERCERA COLUMNA
 let hue = 0;
-let selectedColor = [];
+let selectedColor = [0, 0];
 
 CreateBoard();
 CreateBarHue();
+SelectedColor();
 
 function CreateBoard () {
     for(let j = 0; j < 10; j++){
@@ -78,7 +79,6 @@ function CreateBarHue () {
 }
 
 function SelectedColor () {
-
     let color = selectedColor.length > 0 ? palette[selectedColor[0]][selectedColor[1]].style.backgroundColor : "";
 
     if(color == "") return;

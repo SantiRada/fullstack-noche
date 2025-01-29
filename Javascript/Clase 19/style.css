@@ -135,8 +135,16 @@ option{
     padding-block-end: 4rem;
 }
 .color{
-    width: 100px;
+    width: 230px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 16px;
     background-color: #333;
+    transition: all .2s ease-in;
+
+    &:hover{
+        color: #111;
+    }
 }
