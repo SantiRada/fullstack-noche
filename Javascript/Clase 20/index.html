@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom con Hover</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+        .zoom-image {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .zoom-box {
+            display: none;
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="https://wallpaperaccess.com/full/555988.jpg" class="zoom-image" id="mainImage">
+        <div class="zoom-box" id="zoomBox"></div>
+    </div>
+    
+    <script>
+        const mainImage = document.getElementById('mainImage');
+        const zoomBox = document.getElementById('zoomBox');
+
+        mainImage.addEventListener('mousemove', function(e) {
+            const { left, top, width, height } = mainImage.getBoundingClientRect();
+            const x = ((e.clientX - left) / width) * 100;
+            const y = ((e.clientY - top) / height) * 100;
+
+            zoomBox.style.display = 'block';
+            zoomBox.style.left = "50px";
+            zoomBox.style.top = "50px";
+            zoomBox.style.backgroundImage = `url(${mainImage.src})`;
+            zoomBox.style.backgroundSize = '500px 500px';
+            zoomBox.style.backgroundPosition = `${x}% ${y}%`;
+        });
+
+        mainImage.addEventListener('mouseleave', function() {
+            zoomBox.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
