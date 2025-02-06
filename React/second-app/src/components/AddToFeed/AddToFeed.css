@@ -1,0 +1,21 @@
+.add-to-feed{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 16px;
+    width: 400px;
+}
+.title-sector{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+}
+.title-sector h2{
+    font-size: 1.2rem;
+}
+.list-users{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

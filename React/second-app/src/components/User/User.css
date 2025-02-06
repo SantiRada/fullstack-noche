@@ -1,0 +1,48 @@
+.user{
+    display: grid;
+    grid-template-columns: 48px auto;
+    gap: 0.5rem;
+}
+.img-user{
+    width: 48px;
+    height: 48px;
+    background-color: #ccc;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.data-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.data-user h3 { font-size: 1rem; }
+.data-user p{
+    font-size: 0.85rem;
+    color: #888;
+}
+.button{
+    border-radius: 32px;
+    border: 2px solid #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1e1e1e;
+    width: fit-content;
+    padding: 0.35rem 0.65rem;
+    transform: all .2s ease-in;
+
+    &:hover{
+        outline: 1px solid #1e1e1e;
+    }
+}
+.more{
+    color: #444;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
