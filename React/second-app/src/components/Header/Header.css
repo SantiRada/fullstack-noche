@@ -25,8 +25,13 @@ header{
     border-radius: 4px;
     border: 1px solid #ccc;
     padding-inline-start: 32px;
-
-    &:focus { outline: 1px solid #999; }
+    transition: all .2s ease-in;
+    width: 200px;
+    max-width: 100%;
+}
+.search-sector input.searching{
+    outline: 2px solid #000;
+    width: 300px;
 }
 nav{
     display: flex;
@@ -49,7 +54,39 @@ nav a{
     opacity: 1;
 }
 .image-user{
-    width: 30px;
-    height: 30px;
+    min-width: 24px;
+    height: auto;
     border-radius: 20px;
+}
+.border-user{
+    border: 5px solid #000;
+}
+.bg-searching{
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 50px);
+    background-color: #00000090;
+}
+.autocompleter{
+    position: absolute;
+    top: 42px;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #00000010;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.item-complete{
+    width: 100%;
+    color: #111;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all .2s ease-in;
+
+    &:hover{
+        background-color: #00000020;
+    }
 }
