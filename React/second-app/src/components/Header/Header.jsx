@@ -1,7 +1,7 @@
 import './Header.css';
 import { FaLinkedin, FaUserFriends, FaUniversity, FaSearch, FaHome } from "react-icons/fa";
 import { FaMessage, FaBell } from "react-icons/fa6";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import IconUser from './../Icon/Icon';
 
 export function Header () {
@@ -42,25 +42,73 @@ export function Header () {
     ]
 
     let [search, setSearch] = useState(false);
+    let [searchValue, setSearchValue] = useState("");
 
     let resultados = [ "Ivan", "Jose", "Lautaro", "Santiago", "Aldana", "Eugenio", "Leonardo" ];
 
+    let [recientes, setRecientes] = useState([]);
+
+    let GetLocalStorage = () => {
+        if(localStorage.getItem("recientes") != "null" || localStorage.getItem("recientes") != ""){
+            setRecientes(JSON.parse(localStorage.getItem("recientes")));
+        }
+    }
+
+    let SearchData = (e) => {
+        e.preventDefault();
+
+        if(searchValue != ""){
+            setSearch(false);
+
+            if(recientes) { setRecientes([...recientes, searchValue]); }
+            else { setRecientes([searchValue]); }
+        }
+    }
+
+    useEffect(() => {
+        GetLocalStorage();
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("recientes", JSON.stringify(recientes));
+    }, [recientes]);
+
     return(
         <header>
-            { search && <div onClick={ () => setSearch(false) } className="bg-searching"></div> }
+            { search && <div className="bg-searching"></div> }
             <div className="search-sector">
                 <FaLinkedin size={36} color="#0a66c2" />
                 <div className="searchbar">
                     <FaSearch color="#333" className="icon" size={12} />
-                    <input onClick={ () => setSearch(true) } className={ search && "searching" } type="text" placeholder="Buscar" />
+                    <form onSubmit={ (e) => SearchData(e) }>
+                        <input
+                            onChange={ (e) => setSearchValue(e.target.value) }
+                            onClick={ () => setSearch(true) }
+                            onBlur={ () => setSearch(false) }
+                            className={ search && "searching" }
+                            type="text"
+                            placeholder="Buscar"
+                        />
+                    </form>
 
                     { search &&
                     <div className="autocompleter">
-                        { resultados.map((item, i) => (
+                        { recientes != null && searchValue == "" &&
+                            <>
+                                <h3>Recientes</h3>
+                                { recientes.map((item, i) => (
+                                    <div key={item + "- " + i} className="item-complete">
+                                        <span className="recientes">{item}</span>
+                                    </div>
+                                    ))
+                                }
+                            </>
+                        }
+                        { resultados.filter(item => item.toLowerCase().includes(searchValue.toLowerCase())).map((item, i) => (
                             <div key={item + ": " + i} className="item-complete">
                                 <span>{item}</span>
                             </div>
-                        ))
+                          ))
                         }
                     </div>
                     }
