@@ -22,11 +22,11 @@
         border-radius: 8px;
         background-color: #343434;
         color: #fff;
-
-        &:focus{
-            outline: 2px solid #09f;
-        }
     }
+}
+.input:focus { outline: 2px solid #09f; }
+input[type="checkbox"]:focus{
+    outline: none;
 }
 .error{
     background-color: #ff000020;
@@ -48,4 +48,35 @@
     border-radius: 8px;
     font-size: 1.15rem;
     max-width: 300px;
+}
+header{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 50px;
+    background-color: #1e1e1e;
+    box-shadow: 0px 5px 10px #00000025;
+    padding-inline: 14%;
+    display: flex;
+    align-items: center;
+}
+header nav a{
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.modal{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    border-radius: 16px;
+    width: 100%;
+    height: 300px;
 }
