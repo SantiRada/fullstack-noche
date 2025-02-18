@@ -9,11 +9,13 @@ function App() {
 
   let sendCity = (value) => { setCity(value); }
 
+  let voidCity = () => { setCity(""); }
+
   return (
     <>
       { city == "" ?
         <FormWeather sendCity={sendCity} /> :
-        <CardWeather city={city} />
+        <CardWeather city={city} voidCity={voidCity}/>
       }
     </>
   )

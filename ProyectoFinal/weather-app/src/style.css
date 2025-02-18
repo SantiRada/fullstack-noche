@@ -25,3 +25,71 @@
     padding: 0.5rem 0.75rem;
     cursor: pointer;
 }
+
+
+.card{
+    background-color: #333;
+    padding: 1.5rem;
+    border-radius: 16px;
+    min-width: 350px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+.card h1 { font-size: 1.25rem; }
+.card .icon-card { font-size: 4rem; }
+.temp{
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    gap: 1rem;
+}
+.units{
+    display: flex;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+.units a{
+    opacity: .5;
+}
+.units a.op-1{ opacity: 1; }
+.maxmin{
+    display: flex;
+    gap: 1rem;
+    opacity: .5;
+}
+.grid-2{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+.grid-2 p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.button-back{
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background-color: #333;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2 ease-in;
+
+    &:hover{
+        outline: 2px solid #09f;
+    }
+}
+.card.clouds{
+    background-color: #555;
+}
