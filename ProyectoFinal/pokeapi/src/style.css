@@ -1,0 +1,133 @@
+#list{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+#list div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all .2s ease-in;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(0.97);
+        box-shadow: inset 0px 0px 25px rgba(0 0 0 / 35%);
+    }
+}
+#list div img{
+    width: 100%;
+    height: auto;
+}
+.center-obj{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.button-center{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: all .2s ease-in;
+    margin-top: 1rem;
+
+    &:hover{
+        background-color: color-mix(in srgb, #09f, #000 30%);
+    }
+}
+.primary{
+    background-color: #09f;
+    color: #fff;
+}
+.secondary{
+    border: 2px solid #09f;
+    color: #fff;
+}
+.button{
+    border: 2px solid #09f;
+    color: #fff;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: all .2s ease-in;
+
+    &:hover{
+        background-color: #00000020;
+    }
+}
+.grid-2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 60%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #555;
+    padding: 1rem;
+    position: relative;
+}
+.grid-2::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #555;
+    width: 2px;
+    height: 100%;
+}
+.item h2{
+    width: 100%;
+    font-size: 3rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+.item h2 span { opacity: .5; }
+.item h3{
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.grid-2-complete{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.input{
+    width: 100%;
+    max-width: 380px;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #444;
+    color: #fff;
+    margin-bottom: 1rem;
+
+    &:focus{
+        outline: 3px solid #ccc;
+    }
+}
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
